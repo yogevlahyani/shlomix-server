@@ -10,7 +10,7 @@
   "scripts": {
     "ts": "tsc -w",
     "server": "nodemon ./build/index.js",
-    "start": "tsc && node ./build/index.js",
+    "start": "node index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
   },
   "author": "Yogev Lahyani",
