@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const http = require('http');
 const mongoose = require('mongoose');
 const socketio = require('socket.io');
