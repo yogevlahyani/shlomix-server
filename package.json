@@ -7,7 +7,8 @@
     "webpack": "node_modules/.bin/webpack",
     "ts": "tsc -w",
     "server": "nodemon ./build/index.js",
-    "start": "tsc && node ./build/index.js"
+    "start": "tsc && node ./build/index.js",
+    "postinstall": "npm install"
   },
   "author": "Yogev Lahyani",
   "license": "ISC",
