@@ -13,13 +13,13 @@ module.exports = () => {
 
   app.post('/makeAnOrder', (req, res) => {
       console.log(req.body.cart);
-      let kaki = JSON.parse(req.body.cart);
+      let card = JSON.parse(req.body.cart);
       let orderSchema =  new Order({
         user: {
           name: req.body.name,
           phone: req.body.phone
         },
-        cart: kaki,
+        cart: card,
         address: {
           street: req.body.street,
           city: req.body.city,
@@ -29,7 +29,7 @@ module.exports = () => {
         },
         item: req.body.item,
         rest: req.body.rest,
-        notes: '',
+        notes: req.body.notes,
         total: req.body.total,
         hurry: req.body.hurry,
         created: moment()
