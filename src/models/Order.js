@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 module.exports = mongoose.model('Order', new Schema({
   user:     {
     name: { type: String, required: true },
-    last: { type: String, required: true },
     phone: { type: String, required: true }
   },
   cart:     { type: Array, required: true },

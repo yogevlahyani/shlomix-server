@@ -15,7 +15,6 @@ module.exports = () => {
       let orderSchema =  new Order({
         user: {
           name: req.body.name,
-          last: req.body.last,
           phone: req.body.phone
         },
         cart: req.body.cart,
