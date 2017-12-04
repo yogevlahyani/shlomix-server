@@ -12,15 +12,6 @@ module.exports = () => {
   });
 
   app.post('/makeAnOrder', (req, res) => {
-    console.log(req.body.cart);
-
-    for(let i = 0; i < req.body.cart.length; i++) {
-      console.log(req.body.cart[i]);
-    }
-
-    let kaki = JSON.parse(req.body.cart);
-    console.log(kaki);
-
       let orderSchema =  new Order({
         user: {
           name: req.body.name,
