@@ -18,10 +18,7 @@ module.exports = () => {
           last: req.body.last,
           phone: req.body.phone
         },
-        cart: [{
-          name: req.body.cart.name,
-          price: req.body.cart.price
-        }],
+        cart: req.body.cart,
         address: {
           street: req.body.street,
           city: req.body.city,

@@ -8,10 +8,7 @@ module.exports = mongoose.model('Order', new Schema({
     last: { type: String, required: true },
     phone: { type: String, required: true }
   },
-  cart:     [{
-    name:         { type: String, required: true },
-    price:        { type: Number, required: true }
-  }],
+  cart:     { type: Array, required: true },
   address:  {
     street:     { type: String, required: true },
     city:       { type: String, required: true },
