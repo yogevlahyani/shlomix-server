@@ -13,12 +13,13 @@ module.exports = () => {
 
   app.post('/makeAnOrder', (req, res) => {
       console.log(req.body.cart);
+      let kaki = JSON.parse(req.body.cart);
       let orderSchema =  new Order({
         user: {
           name: req.body.name,
           phone: req.body.phone
         },
-        cart: req.body.cart,
+        cart: kaki,
         address: {
           street: req.body.street,
           city: req.body.city,
