@@ -12,6 +12,7 @@ module.exports = () => {
   });
 
   app.post('/makeAnOrder', (req, res) => {
+      console.log(req.body.cart);
       let orderSchema =  new Order({
         user: {
           name: req.body.name,
