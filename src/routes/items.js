@@ -13,6 +13,14 @@ module.exports = () => {
     });
   });
 
+  app.get('/byItemId/:id', (req, res) => {
+    Item.find({ _id: req.params.id } ,(err, items) => {
+      if(err) throw err;
+
+      res.json(items);
+    });
+  });
+
   app.get('/byCategory/:id', (req, res) => {
     Item.find({ category: req.params.id } ,(err, items) => {
       if(err) throw err;
