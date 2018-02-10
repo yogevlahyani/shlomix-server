@@ -61,7 +61,7 @@ module.exports = () => {
 
       req.body.iconURL ? item.iconURL = req.body.iconURL : null
       req.body.name ? item.name = req.body.name: null;
-      req.body.workHours ? item.workHours = req.body.workHours;
+      req.body.workHours ? item.workHours = req.body.workHours : null;
       req.body.description ? item.description = req.body.description: null;
       item.isVIP = req.body.isVIP;
       item.kosher = req.body.kosher;
