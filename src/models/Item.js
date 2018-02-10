@@ -8,7 +8,7 @@ module.exports = mongoose.model('Item', new Schema({
   iconURL:      { type: String, default: null },
   kosher:       { type: Boolean, default: false },
   category:     [{ type: Schema.Types.ObjectId, ref: 'Category', required: true }],
-  workHours:    { type: Object },
+  workHours:    { type: Array },
   isVIP:        { type: Boolean, default: false },
   created:      { type: Date, default: moment() }
 }));
