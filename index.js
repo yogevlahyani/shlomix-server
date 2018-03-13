@@ -50,5 +50,6 @@ app.use('/orders', require('./src/routes/orders')());
 app.use('/categories', require('./src/routes/categories')());
 app.use('/items', require('./src/routes/items')());
 app.use('/menu', require('./src/routes/menu')());
+app.use('/deals', require('./src/routes/deals')());
 
 server.listen(PORT, () => console.log('Listening on port ' + PORT));
