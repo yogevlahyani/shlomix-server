@@ -65,8 +65,9 @@ module.exports = () => {
                console.log(res);
              }
          });
-        deal.active = req.body.active;
       }
+
+      deal.active = req.body.active;
 
       deal.save((error, updatedDeal) => {
         if (err) throw err;
