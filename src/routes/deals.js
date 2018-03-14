@@ -12,6 +12,14 @@ module.exports = () => {
     });
   });
 
+  app.get('/actives', (req, res) => {
+    Deal.find({ active: true }).populate('item').exec((err, items) => {
+      if(err) throw err;
+
+      res.json(items);
+    });
+  });
+
   app.post('/addDeal', (req, res) => {
     Item.findById(req.body.item, (err, item) => {
       if(err) throw err;
