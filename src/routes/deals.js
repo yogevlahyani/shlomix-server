@@ -42,13 +42,6 @@ module.exports = () => {
     Deal.findOne({ _id: req.body.id }, (err, deal) => {
       if (err) throw err;
 
-      req.body.iconURL ? item.iconURL = req.body.iconURL : null
-      req.body.name ? item.name = req.body.name: null;
-      req.body.workHours ? item.workHours = req.body.workHours : null;
-      req.body.description ? item.description = req.body.description: null;
-      item.isVIP = req.body.isVIP;
-      item.kosher = req.body.kosher;
-
       req.body.logoUrl ? deal.logoUrl = req.body.logoUrl : null;
       req.body.title ? deal.title = req.body.title : null;
       req.body.content ? deal.content = req.body.content : null;
