@@ -5,7 +5,7 @@ const app = express.Router();
 
 module.exports = () => {
   app.get('/', (req, res) => {
-    Deal.find({ active: true } ,(err, items) => {
+    Deal.find({}).populate('item').exec((err, items) => {
       if(err) throw err;
 
       res.json(items);
