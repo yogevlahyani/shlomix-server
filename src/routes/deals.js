@@ -23,7 +23,7 @@ module.exports = () => {
           content:      req.body.content,
           price:        req.body.price,
           discount:     req.body.discount,
-          item:         item._id,
+          item,
           active:       req.body.active
         }).save((err, deal) => {
           if(err) throw err;
