@@ -13,7 +13,7 @@ module.exports = () => {
   });
 
   app.post('/addDeal', (req, res) => {
-    Item.findById(req.body.itemId, (err, item) => {
+    Item.findById(req.body.item, (err, item) => {
       if(err) throw err;
 
       if(item) {
