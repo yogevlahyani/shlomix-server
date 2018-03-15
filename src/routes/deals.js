@@ -72,7 +72,7 @@ module.exports = () => {
       req.body.price ? deal.price = req.body.price : null;
       req.body.discount ? deal.discount = req.body.discount : null;
       req.body.itemId ? deal.item = req.body.itemId : null;
-      req.body.active ? deal.active = req.body.active : null;
+      deal.active = req.body.active;
 
       deal.save((error, updatedDeal) => {
         if (err) throw err;
