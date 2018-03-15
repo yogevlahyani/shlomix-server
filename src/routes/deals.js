@@ -19,11 +19,7 @@ module.exports = () => {
       let items = [];
 
       deals.forEach(deal => {
-        console.log(deal.item.category[0]);
-        console.log(req.params.catId);
-        console.log(deal.item.category[0] == req.params.catId);
-        if (deal.item.category[0] === req.params.catId) { items.push(deal) }
-        console.log(items);
+        if (deal.item.category[0] == req.params.catId) { items.push(deal) }
       });
 
       console.log(items);
