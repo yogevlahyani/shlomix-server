@@ -12,9 +12,15 @@ module.exports = () => {
     });
   });
 
-  app.get('/actives', (req, res) => {
-    Deal.find({ active: true }).populate('item').exec((err, items) => {
+  app.get('/activesByCat/:catId', (req, res) => {
+    Deal.find({ active: true }).populate('item').exec((err, deals) => {
       if(err) throw err;
+
+      let items = [];
+
+      deals.forEach(item => {
+        if (item.item.category[0] === req.params.catId) { items.push(item) }
+      });
 
       res.json(items);
     });
@@ -56,18 +62,7 @@ module.exports = () => {
       req.body.price ? deal.price = req.body.price : null;
       req.body.discount ? deal.discount = req.body.discount : null;
       req.body.itemId ? deal.item = req.body.itemId : null;
-
-      if (req.body.active === true) {
-        Deal.update({}, { active: false }, { multi: true }, function(err, res) {
-             if (err) throw err;
-
-             if (res) {
-               console.log(res);
-             }
-         });
-      }
-
-      deal.active = req.body.active;
+      req.body.active ? deal.active = req.body.active : null;
 
       deal.save((error, updatedDeal) => {
         if (err) throw err;
