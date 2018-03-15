@@ -16,15 +16,23 @@ module.exports = () => {
     Deal.find({ active: true }).populate('item').exec((err, deals) => {
       if(err) throw err;
 
+      function shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
       let items = [];
 
       deals.forEach(deal => {
         if (deal.item.category[0] == req.params.catId) { items.push(deal) }
       });
 
-      console.log(items);
+      let new_items = shuffle(items);
 
-      res.json(items);
+      res.json(new_items);
     });
   });
 
