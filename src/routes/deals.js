@@ -73,6 +73,7 @@ module.exports = () => {
       req.body.discount ? deal.discount = req.body.discount : null;
       req.body.itemId ? deal.item = req.body.itemId : null;
       deal.active = req.body.active;
+      console.log(req.body.active);
 
       deal.save((error, updatedDeal) => {
         if (err) throw err;
