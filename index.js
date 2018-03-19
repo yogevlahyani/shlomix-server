@@ -29,6 +29,11 @@ io.on('connection', function(socket){
     .exec((err, orders) => {
       socket.emit('orders', { orders });
     });
+    Order.find({})
+    .where('hurry').equals(true)
+    .exec((err, orders) => {
+      socket.emit('orders', { orders });
+    })
   }, 3500);
 
   socket.on('send msg', (data) => {
