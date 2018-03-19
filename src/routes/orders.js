@@ -66,6 +66,23 @@ module.exports = () => {
       });
     });
 
+    app.post('/hurryUp', (req, res) => {
+      Order.findById(req.body.orderId, (err, order) => {
+        if (err) throw err;
+
+        order.hurry = true;
+        let orderCreated = moment(order.created).subtract(10, 'minutes');
+        order.created = moment(orderCreated);
+
+        order.save(function (error, updatedOrder) {
+          if (error) throw error;
+
+          res.json(updatedOrder);
+        });
+
+      });
+    });
+
 
   return app;
 }
