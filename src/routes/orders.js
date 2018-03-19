@@ -6,9 +6,11 @@ const app = express.Router();
 module.exports = () => {
 
   app.get('/order/:id', (req, res) => {
-    Order.find({ _id: req.params.id }, (err, order) => {
-      res.json(order);
-    })
+    Order.find({ _id: req.params.id, status: 0 }, (err, order) => {
+      if (err) throw err;
+
+      if (order) { res.json(order); }
+    });
   });
 
   app.post('/makeAnOrder', (req, res) => {
@@ -70,15 +72,22 @@ module.exports = () => {
       Order.findById(req.body.orderId, (err, order) => {
         if (err) throw err;
 
-        order.hurry = true;
-        let orderCreated = moment(order.created).subtract(10, 'minutes');
-        order.created = moment(orderCreated);
+        if (!order.hurry) {
+          order.hurry = true;
+          let orderCreated = moment(order.created).subtract(10, 'minutes');
+          order.created = moment(orderCreated);
+          order.total = order.total + 5;
 
-        order.save(function (error, updatedOrder) {
-          if (error) throw error;
+          order.save(function (error, updatedOrder) {
+            if (error) throw error;
 
-          res.json(updatedOrder);
-        });
+            res.json(updatedOrder);
+          });
+        } else {
+          res.json({
+            'error': true
+          });
+        }
 
       });
     });
