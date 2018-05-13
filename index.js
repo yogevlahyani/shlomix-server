@@ -52,6 +52,8 @@ app.use('/items', require('./src/routes/items')());
 app.use('/menu', require('./src/routes/menu')());
 app.use('/deals', require('./src/routes/deals')());
 
-app.get('/kaki', (req, res) => res.res('KAKI!!!!'));
+app.get('/kaki', (req, res) => {
+  res.send('KAKI!!!!');
+});
 
 server.listen(PORT, () => console.log('Listening on port ' + PORT));
