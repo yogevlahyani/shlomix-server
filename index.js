@@ -53,7 +53,7 @@ app.use('/menu', require('./src/routes/menu')());
 app.use('/deals', require('./src/routes/deals')());
 
 app.get('/kaki', (req, res) => {
-  res.send('ESH!!s KAKI !@#');
+  res.send('ESH!!s KAKI !@#123');
 });
 
 server.listen(PORT, () => console.log('Listening on port ' + PORT));
