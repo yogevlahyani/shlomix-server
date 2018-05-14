@@ -1,0 +1,11 @@
+const mongoose = require('mongoose');
+const moment = require('moment');
+const { Schema } = mongoose;
+
+module.exports = mongoose.model('AdditionalItem', new Schema({
+  name:         { type: String, required: true },
+  description:  { type: String, default: null },
+  price:        { type: Number, required: true },
+  additionalSection:         { type: Schema.Types.ObjectId, ref: 'AdditionalSection', required: true },
+  created:      { type: Date, default: moment() }
+}));

@@ -1,6 +1,8 @@
 const express = require('express');
 const Item = require('./../models/Item');
 const Menu = require('./../models/Menu');
+const AdditionalSection = require('./../models/AdditionalSection');
+const AdditionalItem = require('./../models/AdditionalItem');
 const app = express();
 
 module.exports = (db) => {
@@ -67,6 +69,50 @@ module.exports = (db) => {
           type: 'success'
         });
       }
+    });
+  });
+
+  app.post('/additional/section/add', (req, res) => {
+    Menu.findById(req.body.menuId, (err, menu) => {
+      if(err) throw err;
+
+      if(menu) {
+        new AdditionalSection({
+          name: req.body.name,
+          menu: menu._id
+        }).save((error, as) => {
+          if(error) throw error;
+          res.json({
+            as,
+            feedback: 'פריט נוסף בהצלחה!',
+            type: 'success'
+          });
+        });
+      }
+    });
+  });
+
+  app.post('/additional/item/add', (req, res) => {
+    AdditionalSection.findById(req.body.asId, (err, as) => {
+      if(err) throw err;
+
+      res.json(req.body);
+
+      // if(as) {
+      //   new AdditionalItem({
+      //     name: req.body.name,
+      //     description:  req.body.description,
+      //     price: req.body.price,
+      //     additionalSection: as._id,
+      //   }).save((error, ai) => {
+      //     if(error) throw error;
+      //     res.json({
+      //       ai,
+      //       feedback: 'פריט נוסף בהצלחה!',
+      //       type: 'success'
+      //     });
+      //   });
+      // }
     });
   });
 
