@@ -108,23 +108,21 @@ module.exports = (db) => {
     AdditionalSection.findById(req.body.asId, (err, as) => {
       if(err) throw err;
 
-      res.json(req.body);
-
-      // if(as) {
-      //   new AdditionalItem({
-      //     name: req.body.name,
-      //     description:  req.body.description,
-      //     price: req.body.price,
-      //     additionalSection: as._id,
-      //   }).save((error, ai) => {
-      //     if(error) throw error;
-      //     res.json({
-      //       ai,
-      //       feedback: 'פריט נוסף בהצלחה!',
-      //       type: 'success'
-      //     });
-      //   });
-      // }
+      if(as) {
+        new AdditionalItem({
+          name: req.body.name,
+          description:  req.body.description,
+          price: req.body.price,
+          additionalSection: as._id,
+        }).save((error, ai) => {
+          if(error) throw error;
+          res.json({
+            ai,
+            feedback: 'פריט נוסף בהצלחה!',
+            type: 'success'
+          });
+        });
+      }
     });
   });
 
