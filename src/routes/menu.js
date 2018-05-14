@@ -129,5 +129,29 @@ module.exports = (db) => {
     });
   });
 
+  app.post('/addition/section/delete', (req, res) => {
+    AdditionalSection.remove({ _id: req.body.id }, (err, as) => {
+      if (err) throw err;
+      if(as) {
+        res.json({
+          feedback: 'המסעדה נמחקה בהצלחה!',
+          type: 'success'
+        });
+      }
+    });
+  });
+
+  app.post('/addition/item/delete', (req, res) => {
+    AdditionalItem.remove({ _id: req.body.id }, (err, as) => {
+      if (err) throw err;
+      if(as) {
+        res.json({
+          feedback: 'המסעדה נמחקה בהצלחה!',
+          type: 'success'
+        });
+      }
+    });
+  });
+
   return app;
 }
