@@ -91,7 +91,7 @@ module.exports = (db) => {
         }).save((error, as) => {
           if(error) throw error;
 
-          menu.additionalSection = as._id;
+          menu.additionalSection.push(as._id);
           menu.save();
 
           res.json({
