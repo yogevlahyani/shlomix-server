@@ -8,7 +8,7 @@ const app = express();
 module.exports = (db) => {
 
   app.get('/byItem/:itemId', (req, res) => {
-    Menu.find({ item: req.params.itemId }, (err, menus) => {
+    Menu.find({ item: req.params.itemId }).populate('additionalSection').exec((err, menus) => {
       if(err) throw err;
 
       if(menus) {
@@ -73,7 +73,7 @@ module.exports = (db) => {
   });
 
   app.get('/additional/section', (req, res) => {
-    AdditionalSection.find({}).populate('menu').exec((err, as) => {
+    AdditionalSection.find({}).exec((err, as) => {
       if (err) throw err;
 
       res.json(as);
@@ -90,6 +90,10 @@ module.exports = (db) => {
           menu: menu._id
         }).save((error, as) => {
           if(error) throw error;
+
+          menu.additionalSection = as._id;
+          menu.save();
+
           res.json({
             as,
             feedback: 'פריט נוסף בהצלחה!',

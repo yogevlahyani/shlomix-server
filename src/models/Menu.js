@@ -7,5 +7,6 @@ module.exports = mongoose.model('Menu', new Schema({
   description:  { type: String, default: null },
   price:        { type: Number, required: true },
   item:         { type: Schema.Types.ObjectId, ref: 'Item', required: true },
+  additionalSection:         { type: Schema.Types.ObjectId, ref: 'AdditionalSection', required: true },
   created:      { type: Date, default: moment() }
 }));
