@@ -8,7 +8,7 @@ const app = express();
 module.exports = (db) => {
 
   app.get('/byItem/:itemId', (req, res) => {
-    Menu.find({ item: req.params.itemId }).populate({ path: 'additionalSection', populate: { path: 'additionalItem' } }).exec((err, menus) => {
+    Menu.find({ item: req.params.itemId }).populate('additionalSection').exec((err, menus) => {
       if(err) throw err;
 
       if(menus) {
