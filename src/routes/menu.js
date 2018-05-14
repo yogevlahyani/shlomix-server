@@ -72,6 +72,14 @@ module.exports = (db) => {
     });
   });
 
+  app.get('/additional/section', (req, res) => {
+    AdditionalSection.find({}).populate('menu').exec((err, as) => {
+      if (err) throw err;
+
+      res.json(as);
+    });
+  });
+
   app.post('/additional/section/add', (req, res) => {
     Menu.findById(req.body.menuId, (err, menu) => {
       if(err) throw err;
