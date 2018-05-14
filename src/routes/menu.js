@@ -26,7 +26,8 @@ module.exports = (db) => {
           name: req.body.name,
           description: req.body.description,
           price: req.body.price,
-          item: item._id
+          item: item._id,
+          additionalSection: []
         }).save((error, menu) => {
           if(error) throw error;
           res.json({
