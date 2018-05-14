@@ -117,6 +117,8 @@ module.exports = (db) => {
           additionalSection: as._id,
         }).save((error, ai) => {
           if(error) throw error;
+          as.additionalItem.push(ai._id);
+          as.save();
           res.json({
             ai,
             feedback: 'פריט נוסף בהצלחה!',
