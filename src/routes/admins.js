@@ -6,7 +6,7 @@ const app = express.Router();
 module.exports = () => {
 
   app.post('/login', (req, res) => {
-    Admin.findOne({ username: req.body.username }, (err, user) => {
+    Admin.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
       if (err) throw err;
 
       if (user) {
